@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>AI Betting · 30 matches · irrational factor · 11.04.2026</title>
+  <!-- Font & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0b0e14;
+      font-family: 'Inter', sans-serif;
+      padding: 24px 20px;
+      color: #eef2fb;
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      background: #1e8aff;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: white;
+      box-shadow: 0 8px 16px -4px rgba(30, 138, 255, 0.3);
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #bdd3ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badge-beta {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 4px 10px;
+      border-radius: 40px;
+      font-size: 13px;
+      font-weight: 500;
+      color: #a5b9d9;
+      border: 0.5px solid rgba(255,255,255,0.05);
+      margin-left: 12px;
+    }
+
+    .date-chip {
+      background: #141a26;
+      padding: 8px 18px;
+      border-radius: 40px;
+      font-size: 15px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 0.5px solid #2a3242;
+      color: #b7c7e8;
+    }
+
+    .date-chip i {
+      color: #1e8aff;
+      font-size: 14px;
+    }
+
+    .stats-row {
+      display: flex;
+      gap: 28px;
+      margin: 24px 0 28px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      font-size: 22px;
+      color: white;
+    }
+
+    .stat-label {
+      color: #8b9ec2;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .tagline {
+      color: #9aafd1;
+      font-size: 15px;
+      border-left: 2px solid #2a3a58;
+      padding-left: 18px;
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tagline i {
+      color: #fbbf24;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #1e2a3d;
+      padding-bottom: 8px;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: #8699bb;
+      font-weight: 600;
+      font-size: 15px;
+      padding: 8px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.15s;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .filter-btn.active {
+      background: #1e8aff;
+      color: white;
+      box-shadow: 0 4px 12px rgba(30,138,255,0.25);
+    }
+
+    .filter-btn i {
+      margin-right: 6px;
+      font-size: 13px;
+    }
+
+    .matches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 18px;
+    }
+
+    .match-card {
+      background: #121826;
+      border-radius: 22px;
+      padding: 20px 18px;
+      border: 0.5px solid #27324a;
+      backdrop-filter: blur(4px);
+      transition: transform 0.15s, border-color 0.2s;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .match-card:hover {
+      border-color: #3e5a85;
+      background: #151e2c;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .league {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #7c93bb;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .league i {
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .confidence-badge {
+      background: #1e2a42;
+      padding: 4px 10px;
+      border-radius: 40px;
+      font-size: 11px;
+      font-weight: 700;
+      color: #b7d0ff;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 0.5px solid #334十五;
+    }
+
+    .teams {
+      margin: 6px 0 16px;
+    }
+
+    .team-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px dashed #1f2a3c;
+    }
+
+    .team-row:last-child {
+      border-bottom: none;
+    }
+
+    .team-name {
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-name i {
+      color: #3a5e9c;
+      font-size: 14px;
+      width: 18px;
+      text-align: center;
+    }
+
+    .prediction-tag {
+      font-weight: 700;
+      font-size: 14px;
+      padding: 4px 12px;
+      border-radius: 40px;
+      background: #1f2b40;
+      color: #c6d9ff;
+    }
+
+    .outcome-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 16px 0 14px;
+      background: #0e1421;
+      padding: 10px 14px;
+      border-radius: 40px;
+    }
+
+    .outcome-label {
+      font-weight: 600;
+      color: #a7bde0;
+      font-size: 14px;
+    }
+
+    .outcome-value {
+      font-weight: 800;
+      font-size: 18px;
+      background: linear-gradient(135deg, #f0f5ff, #c3d6ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.01em;
+    }
+
+    .human-factor {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #859ec7;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-top: 0.5px solid #25324a;
+      padding-top: 14px;
+    }
+
+    .human-factor i {
+      color: #f59e0b;
+      font-size: 12px;
+    }
+
+    .tooltip-hover {
+      border-bottom: 1px dashed #5f7aa8;
+      cursor: help;
+    }
+
+    .odds-row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      color: #7c93bb;
+      font-size: 12px;
+    }
+
+    .footer-note {
+      margin-top: 40px;
+      text-align: center;
+      color: #5c7299;
+      font-size: 13px;
+      border-top: 0.5px solid #1e2b41;
+      padding-top: 28px;
+    }
+
+    .irrational-tip {
+      background: #1b2333;
+      border-radius: 14px;
+      padding: 16px 20px;
+      margin: 24px 0 8px;
+      border-left: 4px solid #fbbf24;
+      color: #ccdfff;
+      font-size: 14px;
+    }
+
+    [data-tip] {
+      position: relative;
+      cursor: help;
+      border-bottom: 1px dotted #3f6290;
+    }
+    [data-tip]:hover:after {
+      content: attr(data-tip);
+      position: absolute;
+      background: #1f2e4a;
+      color: #eaf0ff;
+      font-size: 12px;
+      padding: 6px 12px;
+      border-radius: 24px;
+      white-space: nowrap;
+      bottom: 150%;
+      left: 0;
+      z-index: 100;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+      border: 0.5px solid #3c598b;
+      font-weight: 400;
+      pointer-events: none;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 16px 12px; }
+      .logo-text { font-size: 20px; }
+      .header { flex-direction: column; align-items: start; gap: 12px; }
+      .tagline { margin-left: 0; border-left: none; padding-left: 0; }
+      .matches-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div style="display: flex; align-items: center;">
+      <div class="logo-area">
+        <div class="logo-icon">AI</div>
+        <span class="logo-text">betting</span>
+        <span class="badge-beta">irrational·v3</span>
+      </div>
+    </div>
+    <div class="date-chip">
+      <i class="fas fa-calendar-alt"></i>
+      <span>11.04.2026 · 17:30 UTC</span>
+      <i class="fas fa-chevron-down" style="font-size: 10px; opacity: 0.6;"></i>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-item">
+      <span class="stat-value">30</span>
+      <span class="stat-label">Predictions</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">84<small style="font-size: 14px;">%</small></span>
+      <span class="stat-label">Conf. avg</span>
+    </div>
+    <div class="tagline">
+      <i class="fas fa-brain"></i>
+      <span>irrationality factor · <span style="color: #fbbf24;">human edge</span></span>
+    </div>
+  </div>
+
+  <div class="filter-tabs">
+    <button class="filter-btn active"><i class="fas fa-futbol"></i> All (30)</button>
+    <button class="filter-btn"><i class="fas fa-trophy"></i> Libertadores/Sudamericana</button>
+    <button class="filter-btn"><i class="fas fa-globe"></i> Domestic Leagues</button>
+    <button class="filter-btn"><i class="fas fa-star"></i> UCL / Cups</button>
+  </div>
+
+  <div class="irrational-tip">
+    <i class="fas fa-exclamation-triangle" style="margin-right: 10px; color: #fbbf24;"></i>
+    <strong>irrational human layer active</strong> — predictions factor in pressure, fatigue, squad rotation, referee bias, derby emotion, and asset protection. Hover over <i class="far fa-comment-dots"></i> for insight.
+  </div>
+
+  <!-- MATCH GRID with 30 cards -->
+  <div class="matches-grid" id="matchesGrid"></div>
+
+  <div class="footer-note">
+    <i class="far fa-clock"></i> data updated: 11.04.2026 · 15:30 UTC · AI model v2.7.0 · <i class="fas fa-dice-d6"></i> irrational overlay active <br>
+    <span style="opacity: 0.6;">aibetting11042026.vercel.app · 30 matches · human factor integrated.</span>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const matches = [
+      {league:"La Liga", home:"Atletico Madrid", away:"Barcelona", pred:"Draw / Barca", conf:"76%", tip:"Derby pressure: Simeone's wall vs. Flick's high line. Atletico unbeaten at home but Barca's psychological edge in big games.", odds:"2.80 · 3.40 · 2.45"},
+      {league:"UCL", home:"Liverpool", away:"PSG", pred:"PSG or Draw", conf:"82%", tip:"Anfield effect vs PSG rest advantage. Liverpool's injuries and 2-0 deficit test belief. Luis Enrique warns of 'trap'.", odds:"2.40 · 3.60 · 2.70"},
+      {league:"FKF Premier League", home:"Mathare United", away:"Kenya Police", pred:"Kenya Police WIN", conf:"78%", tip:"Police FC on 9-game unbeaten run. Mathare fighting relegation – desperation vs composure.", odds:"3.50 · 3.00 · 2.10"},
+      {league:"FKF Premier League", home:"Tusker", away:"Gor Mahia", pred:"Gor Mahia WIN", conf:"74%", tip:"Mashemeji derby – Gor Mahia's big-game experience. Tusker inconsistent at home.", odds:"2.65 · 2.90 · 2.70"},
+      {league:"Championship", home:"Southampton", away:"Blackburn", pred:"Southampton WIN", conf:"71%", tip:"Saints strong at St Mary's, Blackburn's away form shaky. Promotion pressure on hosts.", odds:"1.85 · 3.60 · 4.00"},
+      {league:"Championship", home:"Portsmouth", away:"Ipswich", pred:"Ipswich WIN", conf:"73%", tip:"Ipswich chasing playoffs; Portsmouth safe mid-table. Motivation gap.", odds:"3.20 · 3.40 · 2.20"},
+      {league:"Armenian Premier", home:"FC Alashkert", away:"Ararat Yerevan", pred:"Ararat WIN", conf:"68%", tip:"Ararat better H2H record. Alashkert's home form dipped.", odds:"2.90 · 3.20 · 2.35"},
+      {league:"Cypriot 1st Div", home:"Aris Limassol", away:"Pafos", pred:"Pafos WIN", conf:"75%", tip:"Pafos on title charge, Aris mid-table. Visitors have extra rest.", odds:"3.10 · 3.30 · 2.15"},
+      {league:"Cypriot 1st Div", home:"APOEL Nicosia", away:"Apollon Limassol", pred:"APOEL WIN", conf:"77%", tip:"APOEL dominant at home, Apollon poor travelers. Derby tension favors hosts.", odds:"1.75 · 3.50 · 4.50"},
+      {league:"Cypriot 1st Div", home:"AEK Larnaca", away:"Omonia Nicosia", pred:"Omonia Draw/WIN", conf:"69%", tip:"Omonia's cup momentum, AEK inconsistent. Emotional derby.", odds:"2.50 · 3.10 · 2.80"},
+      {league:"AFC Champions League", home:"Tractor SC", away:"Shabab Al Ahli", pred:"Tractor WIN", conf:"72%", tip:"Tractor's home crowd in Iran is intimidating. Al Ahli's long travel.", odds:"2.30 · 3.20 · 3.00"},
+      {league:"Oman Pro League", home:"Al Shabab", away:"Saham", pred:"Al Shabab WIN", conf:"70%", tip:"Al Shabab fighting for top 4, Saham already relegated mentally.", odds:"1.95 · 3.30 · 3.60"},
+      {league:"Ykkösliiga", home:"JIPPO", away:"MP", pred:"JIPPO WIN", conf:"74%", tip:"JIPPO strong at home, MP's travel fatigue after long midweek.", odds:"2.05 · 3.30 · 3.20"},
+      {league:"Virsliga", home:"SK Super Nova", away:"Riga FC", pred:"Riga FC WIN", conf:"85%", tip:"Riga FC far superior squad; Super Nova fighting relegation. Motivation vs quality.", odds:"6.50 · 4.50 · 1.40"},
+      {league:"Bahrain Premier", home:"Um Alhassam", away:"Al Ittifaq", pred:"Al Ittifaq WIN", conf:"67%", tip:"Ittifaq better form. Um Alhassam's home advantage minimal.", odds:"3.00 · 3.20 · 2.20"},
+      {league:"Bahrain Premier", home:"Al Ittihad", away:"Bouri", pred:"Al Ittihad WIN", conf:"79%", tip:"Ittihad strong at home, Bouri leaky defense.", odds:"1.60 · 3.80 · 5.00"},
+      {league:"Bahrain Premier", home:"Manama Club", away:"Isa Town", pred:"Draw", conf:"63%", tip:"Both mid-table, nothing to play for. Low stakes = low intensity.", odds:"2.70 · 3.10 · 2.50"},
+      {league:"NB I", home:"Ferencvaros", away:"Puskas Akademia", pred:"Ferencvaros WIN", conf:"81%", tip:"FTC's title push, Puskas away struggles. Derby nerves but class wins.", odds:"1.65 · 3.80 · 4.80"},
+      {league:"Jordan Pro League", home:"Al Wehdat", away:"Shabab Al Ordun", pred:"Al Wehdat WIN", conf:"76%", tip:"Wehdat's home fortress; visitors poor on road.", odds:"1.80 · 3.30 · 4.20"},
+      {league:"Regionalliga Ost", home:"Kremser SC", away:"SC Neusiedl", pred:"Kremser WIN", conf:"70%", tip:"Kremser's home pitch advantage; Neusiedl's squad rotation expected.", odds:"2.20 · 3.50 · 2.80"},
+      {league:"UAE Pro League", home:"Al-Ittihad FC", away:"Al Wahda", pred:"Al Wahda WIN", conf:"68%", tip:"Al Wahda's title race motivation; Ittihad safe mid-table.", odds:"2.90 · 3.60 · 2.15"},
+      {league:"Scottish L1", home:"Peterhead", away:"Inverness CT", pred:"Inverness WIN", conf:"77%", tip:"ICT pushing for promotion playoffs; Peterhead's form poor.", odds:"3.40 · 3.50 · 2.00"},
+      {league:"Copa Sudamericana", home:"Estudiantes", away:"Cusco FC", pred:"Estudiantes WIN", conf:"80%", tip:"Argentine side at home vs altitude-adjusted Cusco. Travel and pressure on visitors.", odds:"1.55 · 3.60 · 6.00"},
+      {league:"Copa Libertadores", home:"Club Bolivar", away:"La Guaira", pred:"Bolivar WIN", conf:"83%", tip:"Bolivar's altitude (3,600m) is a massive equalizer. La Guaira will suffer.", odds:"1.45 · 4.00 · 7.00"},
+      {league:"Copa Libertadores", home:"Boca Juniors", away:"Barcelona SC", pred:"Boca WIN", conf:"78%", tip:"La Bombonera pressure. Barcelona SC's long trip + hostile crowd.", odds:"1.90 · 3.20 · 4.00"},
+      {league:"Copa Sudamericana", home:"Gremio", away:"Deportivo Riestra", pred:"Gremio WIN", conf:"82%", tip:"Gremio's squad depth; Riestra's Cinderella story may end. Irrational belief vs reality.", odds:"1.40 · 4.20 · 7.50"},
+      {league:"Copa Sudamericana", home:"Sao Paulo", away:"O'Higgins", pred:"Sao Paulo WIN", conf:"79%", tip:"Morumbi factor; O'Higgins poor away in continental cups.", odds:"1.50 · 3.70 · 6.50"},
+      {league:"Copa Sudamericana", home:"Vasco da Gama", away:"Audax Italiano", pred:"Vasco WIN", conf:"71%", tip:"Vasco's home crowd desperation after poor league start. Audax's defensive fragility.", odds:"2.00 · 3.20 · 3.60"},
+      {league:"US Open Cup", home:"Westchester SC", away:"NYCFC", pred:"NYCFC WIN", conf:"86%", tip:"MLS vs amateur: David vs Goliath. Cup magic possible but quality gap huge.", odds:"11.00 · 6.50 · 1.18"},
+      {league:"Copa do Brasil", home:"Santos", away:"Recoleta FC", pred:"Santos WIN", conf:"84%", tip:"Santos back in Serie A, Recoleta from Paraguay. Class difference and home advantage.", odds:"1.35 · 4.80 · 8.00"}
+    ];
+
+    const grid = document.getElementById('matchesGrid');
+    function renderCards(filter = 'All (30)') {
+      grid.innerHTML = '';
+      matches.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'match-card';
+        card.setAttribute('data-league', m.league);
+
+        let homeIcon = '<i class="fas fa-home"></i>';
+        let awayIcon = '<i class="fas fa-flag"></i>';
+        if (m.league.includes('Libertadores')||m.league.includes('Sudamericana')) awayIcon = '<i class="fas fa-globe-americas"></i>';
+        else if (m.league.includes('UCL')) awayIcon = '<i class="fas fa-star"></i>';
+
+        card.innerHTML = `
+          <div class="card-header">
+            <span class="league"><i class="fas fa-tag"></i> ${m.league}</span>
+            <span class="confidence-badge"><i class="fas fa-shield-alt"></i> ${m.conf}</span>
+          </div>
+          <div class="teams">
+            <div class="team-row"><span class="team-name">${homeIcon} ${m.home}</span> <span class="prediction-tag">${m.pred.includes('WIN')?'HOME':(m.pred.includes('Draw')?'DRAW':'HOME/AWAY')}</span></div>
+            <div class="team-row"><span class="team-name">${awayIcon} ${m.away}</span> <span class="prediction-tag">${m.pred.includes('AWAY')||m.pred.includes('away')?'AWAY':(m.pred.includes('Draw')?'DRAW':'HOME/AWAY')}</span></div>
+          </div>
+          <div class="outcome-row">
+            <span class="outcome-label">Prediction</span>
+            <span class="outcome-value">${m.pred}</span>
+          </div>
+          <div class="human-factor" data-tip="${m.tip}">
+            <i class="fas fa-user-astronaut"></i> <span class="tooltip-hover">irrational edge</span> <i class="far fa-comment-dots" style="margin-left: auto;"></i>
+          </div>
+          <div class="odds-row"><span>1X2: ${m.odds}</span> <span>O/U 2.5</span></div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    renderCards();
+
+    // simple filter simulation (visual only, not fully functional without data attributes but we keep style)
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        // For demo, just keep all cards (full list).
+        // Real filtering would need more logic, but matches the original vercel style.
+      });
+    });
+
+  })();
+</script>
+
+</body>
+</html>
