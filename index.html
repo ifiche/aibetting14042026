@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-  <title>AI Betting · 30 matches · irrational factor · 11.04.2026</title>
+  <title>AI Betting · 30 matches · banker picks · 11.04.2026</title>
   <!-- Font & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -123,6 +123,17 @@
       letter-spacing: 0.02em;
     }
 
+    .banker-badge {
+      background: #0f3222;
+      color: #6fcf97;
+      padding: 2px 10px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-left: 8px;
+      border: 0.5px solid #2a7a4f;
+    }
+
     .tagline {
       color: #9aafd1;
       font-size: 15px;
@@ -187,11 +198,37 @@
       box-shadow: 0 20px 30px -10px rgba(0,0,0,0.5);
       display: flex;
       flex-direction: column;
+      position: relative;
+    }
+
+    .match-card.banker {
+      border: 1.5px solid #2ecc71;
+      box-shadow: 0 0 15px rgba(46, 204, 113, 0.15);
+      background: linear-gradient(145deg, #121826 0%, #132a1f 100%);
+    }
+
+    .banker-icon {
+      position: absolute;
+      top: -8px;
+      right: 16px;
+      background: #2ecc71;
+      color: #0b0e14;
+      font-weight: 800;
+      font-size: 11px;
+      padding: 4px 12px;
+      border-radius: 40px;
+      box-shadow: 0 4px 10px rgba(46,204,113,0.3);
+      letter-spacing: 0.5px;
     }
 
     .match-card:hover {
       border-color: #3e5a85;
       background: #151e2c;
+    }
+
+    .match-card.banker:hover {
+      border-color: #2ecc71;
+      background: #142b20;
     }
 
     .card-header {
@@ -296,6 +333,12 @@
       letter-spacing: -0.01em;
     }
 
+    .banker .outcome-value {
+      background: linear-gradient(135deg, #e0ffe0, #a3f0b0);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
     .human-factor {
       margin-top: 8px;
       font-size: 12px;
@@ -342,6 +385,22 @@
       border-left: 4px solid #fbbf24;
       color: #ccdfff;
       font-size: 14px;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .banker-legend {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+      gap: 8px;
+      background: #0f3222;
+      padding: 4px 14px;
+      border-radius: 40px;
+      color: #6fcf97;
+      font-weight: 600;
+      font-size: 13px;
     }
 
     [data-tip] {
@@ -373,18 +432,20 @@
       .header { flex-direction: column; align-items: start; gap: 12px; }
       .tagline { margin-left: 0; border-left: none; padding-left: 0; }
       .matches-grid { grid-template-columns: 1fr; }
+      .banker-legend { margin-left: 0; margin-top: 8px; }
     }
   </style>
 </head>
 <body>
 <div class="container">
-
+  
   <div class="header">
     <div style="display: flex; align-items: center;">
       <div class="logo-area">
         <div class="logo-icon">AI</div>
         <span class="logo-text">betting</span>
         <span class="badge-beta">irrational·v3</span>
+        <span class="banker-badge"><i class="fas fa-chart-line"></i> 8 BANKERS</span>
       </div>
     </div>
     <div class="date-chip">
@@ -404,7 +465,7 @@
       <span class="stat-label">Conf. avg</span>
     </div>
     <div class="tagline">
-      <i class="fas fa-brain"></i>
+      <i class="fas fa-brain"></i> 
       <span>irrationality factor · <span style="color: #fbbf24;">human edge</span></span>
     </div>
   </div>
@@ -414,11 +475,17 @@
     <button class="filter-btn"><i class="fas fa-trophy"></i> Libertadores/Sudamericana</button>
     <button class="filter-btn"><i class="fas fa-globe"></i> Domestic Leagues</button>
     <button class="filter-btn"><i class="fas fa-star"></i> UCL / Cups</button>
+    <button class="filter-btn" style="background:#0f3222; color:#6fcf97;"><i class="fas fa-gem"></i> Bankers only</button>
   </div>
 
   <div class="irrational-tip">
-    <i class="fas fa-exclamation-triangle" style="margin-right: 10px; color: #fbbf24;"></i>
-    <strong>irrational human layer active</strong> — predictions factor in pressure, fatigue, squad rotation, referee bias, derby emotion, and asset protection. Hover over <i class="far fa-comment-dots"></i> for insight.
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <i class="fas fa-exclamation-triangle" style="color: #fbbf24;"></i>
+      <strong>irrational human layer active</strong> — predictions factor in pressure, fatigue, squad rotation, referee bias, derby emotion, and asset protection.
+    </div>
+    <div class="banker-legend">
+      <i class="fas fa-check-circle" style="color:#2ecc71;"></i> Green border = BANKER (high confidence + irrational edge aligned)
+    </div>
   </div>
 
   <!-- MATCH GRID with 30 cards -->
@@ -426,12 +493,15 @@
 
   <div class="footer-note">
     <i class="far fa-clock"></i> data updated: 11.04.2026 · 15:30 UTC · AI model v2.7.0 · <i class="fas fa-dice-d6"></i> irrational overlay active <br>
-    <span style="opacity: 0.6;">aibetting11042026.vercel.app · 30 matches · human factor integrated.</span>
+    <span style="opacity: 0.6;">aibetting11042026.vercel.app · 30 matches · 8 bankers highlighted · human factor integrated.</span>
   </div>
 </div>
 
 <script>
   (function() {
+    // Define banker IDs based on high confidence + clear advantage (irrational aligned)
+    const bankerIndices = [13, 23, 24, 25, 26, 27, 28, 29]; // zero-indexed: Riga FC, Estudiantes, Bolivar, Boca, Gremio, Sao Paulo, Vasco, Westchester (NYCFC), Santos
+
     const matches = [
       {league:"La Liga", home:"Atletico Madrid", away:"Barcelona", pred:"Draw / Barca", conf:"76%", tip:"Derby pressure: Simeone's wall vs. Flick's high line. Atletico unbeaten at home but Barca's psychological edge in big games.", odds:"2.80 · 3.40 · 2.45"},
       {league:"UCL", home:"Liverpool", away:"PSG", pred:"PSG or Draw", conf:"82%", tip:"Anfield effect vs PSG rest advantage. Liverpool's injuries and 2-0 deficit test belief. Luis Enrique warns of 'trap'.", odds:"2.40 · 3.60 · 2.70"},
@@ -466,19 +536,25 @@
     ];
 
     const grid = document.getElementById('matchesGrid');
-    function renderCards(filter = 'All (30)') {
+    
+    function renderCards() {
       grid.innerHTML = '';
-      matches.forEach(m => {
+      matches.forEach((m, idx) => {
         const card = document.createElement('div');
         card.className = 'match-card';
-        card.setAttribute('data-league', m.league);
-
+        if (bankerIndices.includes(idx)) {
+          card.classList.add('banker');
+        }
+        
         let homeIcon = '<i class="fas fa-home"></i>';
         let awayIcon = '<i class="fas fa-flag"></i>';
         if (m.league.includes('Libertadores')||m.league.includes('Sudamericana')) awayIcon = '<i class="fas fa-globe-americas"></i>';
         else if (m.league.includes('UCL')) awayIcon = '<i class="fas fa-star"></i>';
 
+        const bankerBadge = bankerIndices.includes(idx) ? '<span class="banker-icon"><i class="fas fa-gem"></i> BANKER</span>' : '';
+
         card.innerHTML = `
+          ${bankerBadge}
           <div class="card-header">
             <span class="league"><i class="fas fa-tag"></i> ${m.league}</span>
             <span class="confidence-badge"><i class="fas fa-shield-alt"></i> ${m.conf}</span>
@@ -502,14 +578,34 @@
 
     renderCards();
 
-    // simple filter simulation (visual only, not fully functional without data attributes but we keep style)
+    // Filter functionality (basic)
     const filterBtns = document.querySelectorAll('.filter-btn');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', function(e) {
         filterBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        // For demo, just keep all cards (full list).
-        // Real filtering would need more logic, but matches the original vercel style.
+        
+        const filterText = this.innerText.toLowerCase();
+        const cards = document.querySelectorAll('.match-card');
+        
+        cards.forEach((card, idx) => {
+          const league = matches[idx].league.toLowerCase();
+          const isBanker = bankerIndices.includes(idx);
+          
+          if (filterText.includes('all')) {
+            card.style.display = 'flex';
+          } else if (filterText.includes('banker')) {
+            card.style.display = isBanker ? 'flex' : 'none';
+          } else if (filterText.includes('libertadores') || filterText.includes('sudamericana')) {
+            card.style.display = (league.includes('libertadores') || league.includes('sudamericana')) ? 'flex' : 'none';
+          } else if (filterText.includes('domestic')) {
+            card.style.display = (!league.includes('libertadores') && !league.includes('sudamericana') && !league.includes('ucl') && !league.includes('cup') && !league.includes('champions')) ? 'flex' : 'none';
+          } else if (filterText.includes('ucl') || filterText.includes('cups')) {
+            card.style.display = (league.includes('ucl') || league.includes('cup') || league.includes('champions')) ? 'flex' : 'none';
+          } else {
+            card.style.display = 'flex';
+          }
+        });
       });
     });
 
